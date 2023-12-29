@@ -1,9 +1,9 @@
+'use client';
 /**
  * v0 by Vercel.
  * @see https://v0.dev/t/jBe8EyOTvgH
  */
 
-'use client';
 import { Checkbox } from '@/components/ui/checkbox';
 import { Label } from '@/components/ui/label';
 import { Button } from '@/components/ui/button';
