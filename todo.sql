@@ -1,6 +1,6 @@
 CREATE TABLE IF NOT EXISTS todos (
     id SERIAL PRIMARY KEY,
-    user_id UUID DEFAULT uuid_generate_v4() NOT NULL,
+    user_id UUID REFERENCES auth.users(id),
     description VARCHAR NOT NULL,
     is_completed BOOLEAN DEFAULT FALSE NOT NULL,
     created_at TIMESTAMPTZ DEFAULT current_timestamp NOT NULL,

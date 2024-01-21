@@ -13,14 +13,24 @@ export default function Component() {
 
   useEffect(() => {
     async function getTodos() {
-      const todos = await supabase.from('todos').select('*');
-      setTodos(todos.data);
+      const {
+        data: { session },
+      } = await supabase.auth.getSession();
+
+      const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL!}/todos`, {
+        method: 'GET',
+        headers: {
+          Authorization: `Bearer ${session?.access_token}`,
+        },
+      });
+
+      const todos = await res.json();
+      setTodos(todos);
     }
 
     getTodos();
   }, []);
 
-  console.log(todos);
   return (
     <div className='p-4 space-y-4'>
       <h1 className='text-2xl font-bold'>Todo List</h1>
