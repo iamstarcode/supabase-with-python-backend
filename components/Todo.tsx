@@ -25,6 +25,7 @@ export default function Component() {
       });
 
       const todos = await res.json();
+
       setTodos(todos);
     }
 
